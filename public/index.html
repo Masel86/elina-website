@@ -454,6 +454,11 @@
   document.getElementById('al-pass').addEventListener('keydown', function(e){ if(e.key==='Enter') doLogin(); });
   document.getElementById('al-cancel').addEventListener('click', hideLogin);
   document.getElementById('ab-logout').addEventListener('click', doLogout);
+  // Footer-Button "Admin-Login"
+  var loginBtn = document.getElementById('admin-login-btn');
+  if(loginBtn){
+    loginBtn.addEventListener('click', function(){ if(isLoggedIn()){ showBar(); } else { showLogin(); } });
+  }
   document.getElementById('ab-toggle-edit').addEventListener('click', function(){ setEditing(!editing); });
   document.getElementById('ab-export').addEventListener('click', exportHtml);
   document.getElementById('ab-reset').addEventListener('click', function(){
@@ -463,15 +468,7 @@
     }
   });
 
-  // Login öffnen per Button in der Fußzeile
-  var loginBtn = document.getElementById('admin-login-btn');
-  if(loginBtn){
-    loginBtn.addEventListener('click', function(){
-      if(isLoggedIn()){ showBar(); } else { showLogin(); }
-    });
-  }
-
-  // Zusätzlich: Login öffnen per Tastenkürzel  Strg+Shift+E  oder  #admin im Link
+  // Login öffnen per Tastenkürzel  Strg+Shift+E  oder  #admin im Link
   document.addEventListener('keydown', function(e){
     if(e.ctrlKey && e.shiftKey && (e.key==='E'||e.key==='e')){ e.preventDefault(); if(isLoggedIn()){ showBar(); } else { showLogin(); } }
   });
